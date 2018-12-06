@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
+    }
+}
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'java'
+
+group = pluginGroup
+version = pluginVersion
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'destroystokyo-repo'
+        url = 'https://repo.destroystokyo.com/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        url = "https://jitpack.io"
+    }
+    maven { url 'https://repo.bstats.org/content/repositories/releases' }
+    maven { url 'https://repo.aikar.co/content/groups/aikar/' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/groups/public/' }
+}
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'com.destroystokyo.paper:paper-api:1.13.2-R0.1-SNAPSHOT'
+    compile "co.aikar:acf-core:+"
+    compile "co.aikar:acf-paper:+"
+    compile group: 'org.bstats', name: 'bstats-bukkit', version: '1.2'
+    implementation 'com.github.tr7zw:Item-NBT-API:master-SNAPSHOT'
+}
+shadowJar {
+    relocate 'co.aikar.commands', 'me.darkeyedragon.magicwands.acf'
+    archiveName = "${baseName}-${version}.${extension}"
+}
+
+build.dependsOn shadowJar

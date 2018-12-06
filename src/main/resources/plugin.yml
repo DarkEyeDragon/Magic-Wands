@@ -1,0 +1,7 @@
+name: Magicwands
+version: 0.0.1
+main: me.darkeyedragon.magicwands.Magicwands
+prefix: MW
+authors: [DarkEyeDragon]
+description: Fight your enemies with awesome magic spells!
+website: https://darkeyedragon.me
