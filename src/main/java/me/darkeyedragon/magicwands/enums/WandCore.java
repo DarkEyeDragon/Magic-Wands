@@ -9,13 +9,19 @@ package me.darkeyedragon.magicwands.enums;
  * Rarity: Lower is more common.
  * */
 
+import me.darkeyedragon.magicwands.Magicwands;
+
 public enum WandCore{
-    UNICORN(0.30), DRAGON(0.50), PHOENIX(0.90);
+    UNICORN(0.30, 1, Magicwands.BASE_DAMAGE * 1.2), DRAGON(0.50, 0.5, Magicwands.BASE_DAMAGE * 2.8), PHOENIX(0.90, 1, Magicwands.BASE_DAMAGE * 1.1);
 
     private double rarity;
+    private double baseDamage;
+    private double stability;
 
-    WandCore (double rarity){
+    WandCore (double rarity, double stability, double baseDamage){
         this.rarity = rarity;
+        this.baseDamage = baseDamage;
+        this.stability = stability;
     }
 
     public static boolean isWandCore (String name){
@@ -43,5 +49,17 @@ public enum WandCore{
             builder.append(" ");
         }
         return builder.toString();
+    }
+
+    public double getRarity (){
+        return rarity;
+    }
+
+    public double getBaseDamage (){
+        return baseDamage;
+    }
+
+    public double getStability (){
+        return stability;
     }
 }

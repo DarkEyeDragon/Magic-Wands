@@ -46,8 +46,10 @@ dependencies {
     compile group: 'org.bstats', name: 'bstats-bukkit', version: '1.2'
     implementation 'com.github.tr7zw:Item-NBT-API:master-SNAPSHOT'
 }
+
 shadowJar {
     relocate 'co.aikar.commands', 'me.darkeyedragon.magicwands.acf'
+    destinationDir = file("C:/Users/Joshua/Documents/Minecraft Server/plugins/")
     archiveName = "${baseName}-${version}.${extension}"
 }
 

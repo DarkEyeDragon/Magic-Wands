@@ -21,4 +21,29 @@ public enum WandWood{
         this.power = power;
         this.permanentOwner = permanentOwner;
     }
+
+    public static WandWood getWandWood (String name){
+        for (WandWood ww : WandWood.values()){
+            if (ww.toString().equalsIgnoreCase(name)){
+                return ww;
+            }
+        }
+        return null;
+    }
+
+    public double getRarity (){
+        return rarity;
+    }
+
+    public double getStability (){
+        return stability;
+    }
+
+    public double getPower (){
+        return power;
+    }
+
+    public boolean isPermanentOwner (){
+        return permanentOwner;
+    }
 }

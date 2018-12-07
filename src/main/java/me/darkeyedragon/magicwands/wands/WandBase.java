@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class WandBase{
 
@@ -39,15 +40,20 @@ public class WandBase{
         nbtItem.setBoolean(IS_WAND, true);
         nbtItem.setString(WAND_CORE_NBT, wandCore.name());
         nbtItem.setString(WAND_WOOD_NBT, wandWood.name());
+        nbtItem.setString("uuid", UUID.randomUUID().toString());
     }
 
     public void bindSpell (Spell spell){
         boundSpell = spell;
-        loreList.set(2, "Bound spell:" + boundSpell);
+        if (loreList.size() > 2){
+            loreList.set(1, "Bound spell:" + boundSpell.getClass().getName());
+        }else{
+            loreList.add("Bound spell:" + boundSpell.toString());
+        }
         itemStack.setLore(loreList);
     }
 
     public void give (Player player){
-        player.getInventory().addItem(itemStack);
+        player.getInventory().addItem(nbtItem.getItem());
     }
 }
