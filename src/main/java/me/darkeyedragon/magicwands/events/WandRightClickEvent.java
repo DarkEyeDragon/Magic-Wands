@@ -28,9 +28,7 @@ public class WandRightClickEvent implements Listener{
             if (Magicwands.recentlyCast.containsKey(p)){
                 Spell spell1 = Magicwands.recentlyCast.get(p);
                 if (spell1.lastCast + 1000 < System.currentTimeMillis()){
-                    System.out.println("OK:" + spell1.lastCast);
                     spell.spawnParticles(p.getLocation(), 0);
-                    System.out.println(spell.lastCast);
                     Magicwands.recentlyCast.remove(p);
                     Magicwands.recentlyCast.put(p, spell);
                 }else{
