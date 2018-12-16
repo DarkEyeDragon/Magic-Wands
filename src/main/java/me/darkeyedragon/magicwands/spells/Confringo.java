@@ -69,7 +69,7 @@ public class Confringo extends Spell{
                 location.add(x, 1.2, z).add(location.getDirection());
                 particleBuilder.location(location);
                 particleBuilder.spawn();
-                if (count > 5){
+                if (count > 4){
                     entities = (List<Entity>) location.getNearbyEntities(2, 2, 2);
                     entities.forEach((v) -> damageEntity(v));
                     count = 0;

@@ -1,6 +1,7 @@
 package me.darkeyedragon.magicwands;
 
 import co.aikar.commands.PaperCommandManager;
+import me.darkeyedragon.magicwands.Wrappers.PlayerMana;
 import me.darkeyedragon.magicwands.commands.CreateWandCommand;
 import me.darkeyedragon.magicwands.commands.WandInfoCommand;
 import me.darkeyedragon.magicwands.events.WandRightClickEvent;
@@ -17,10 +18,12 @@ public final class Magicwands extends JavaPlugin{
 
     public static final double BASE_DAMAGE = 5;
     public static Map<Player, Spell> recentlyCast;
+    public static Map<Player, PlayerMana> playerManaMappings;
 
     @Override
     public void onEnable (){
         // Plugin startup logic
+        playerManaMappings = new HashMap<>();
         recentlyCast = new HashMap<>();
         manager = new PaperCommandManager(this);
         manager.registerCommand(new CreateWandCommand(this));
