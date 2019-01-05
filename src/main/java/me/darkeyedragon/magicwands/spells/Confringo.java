@@ -25,6 +25,7 @@ public class Confringo extends Spell{
     private double coreDamage;
     private double woodMultiplier;
     private Spell spell;
+    private double manaCost = 10;
 
     public Confringo (Player player){
         ItemStack itemStack = player.getInventory().getItemInMainHand();
@@ -84,6 +85,6 @@ public class Confringo extends Spell{
                 }
 
             }
-        }.runTaskTimer(Magicwands.getPlugin(Magicwands.class), 0, 0);
+        }.runTaskTimer(Magicwands.getPlugin(Magicwands.class), 10, 1);
     }
 }

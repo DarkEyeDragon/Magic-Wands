@@ -1,11 +1,11 @@
 package me.darkeyedragon.magicwands;
 
 import co.aikar.commands.PaperCommandManager;
-import me.darkeyedragon.magicwands.Wrappers.PlayerMana;
 import me.darkeyedragon.magicwands.commands.CreateWandCommand;
 import me.darkeyedragon.magicwands.commands.WandInfoCommand;
 import me.darkeyedragon.magicwands.events.WandRightClickEvent;
 import me.darkeyedragon.magicwands.spells.Spell;
+import me.darkeyedragon.magicwands.wrappers.PlayerMana;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 

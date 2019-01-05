@@ -1,4 +1,4 @@
-package me.darkeyedragon.magicwands.Wrappers;
+package me.darkeyedragon.magicwands.wrappers;
 
 import org.bukkit.entity.Player;
 
