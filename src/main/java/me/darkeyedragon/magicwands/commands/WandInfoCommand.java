@@ -7,15 +7,8 @@ import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.Subcommand;
 import de.tr7zw.itemnbtapi.NBTItem;
 import me.darkeyedragon.magicwands.Magicwands;
-import me.darkeyedragon.magicwands.enums.WandCore;
-import me.darkeyedragon.magicwands.enums.WandWood;
-import me.darkeyedragon.magicwands.wands.WandBase;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.Objects;
-
-import static org.bukkit.ChatColor.*;
 
 
 @CommandAlias ("magicwands|mw|magicwand")
@@ -30,9 +23,9 @@ public class WandInfoCommand extends BaseCommand{
     public void giveWand (Player player, String[] args){
         ItemStack itemStack = player.getInventory().getItemInMainHand();
         NBTItem nbtItem = new NBTItem(itemStack);
-        String coreNBT = nbtItem.getString(WandBase.WAND_CORE_NBT);
-        String woodNBT = nbtItem.getString(WandBase.WAND_WOOD_NBT);
-        if (WandCore.isWandCore(coreNBT)){
+        //String coreNBT = nbtItem.getString(WandBase.WAND_CORE_NBT);
+        //String woodNBT = nbtItem.getString(WandBase.WAND_WOOD_NBT);
+        /*if (WandCore.isWandCore(coreNBT)){
             WandCore wandCore = Objects.requireNonNull(WandCore.getWandCore(coreNBT));
             WandWood wandWood = Objects.requireNonNull(WandWood.getWandWood(woodNBT));
             player.sendMessage(AQUA + "============== " + GOLD + "Core " + AQUA + "==============");
@@ -47,6 +40,6 @@ public class WandInfoCommand extends BaseCommand{
             player.sendMessage(GREEN + "Wood stability: " + wandWood.getStability());
         }else{
             player.sendMessage(RED + "The item in your hand is not a valid wand!");
-        }
+        }*/
     }
 }

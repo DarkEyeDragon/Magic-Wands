@@ -5,15 +5,8 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.Subcommand;
-import me.darkeyedragon.magicwands.enums.WandCore;
-import me.darkeyedragon.magicwands.enums.WandWood;
-import me.darkeyedragon.magicwands.spells.Confringo;
-import me.darkeyedragon.magicwands.wands.WandBase;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-
-import java.util.Objects;
 
 @CommandAlias ("magicwands|mw|magicwand")
 public class CreateWandCommand extends BaseCommand{
@@ -28,7 +21,7 @@ public class CreateWandCommand extends BaseCommand{
     @Description ("Give the player a basic wand")
     @CommandPermission ("magicwands.admin")
     public void giveWand (Player player, String[] args){
-        WandBase wandBase;
+        /*WandBase wandBase;
         if (args.length > 0){
             if (WandCore.isWandCore(args[0])){
                 wandBase = new WandBase(args[0], Objects.requireNonNull(WandCore.getWandCore(args[0])), WandWood.ASH);
@@ -38,6 +31,6 @@ public class CreateWandCommand extends BaseCommand{
                 player.sendMessage(ChatColor.RED + args[0] + " is not a valid core!");
                 player.sendMessage("Valid cores are: " + WandCore.getWandCoresAsString());
             }
-        }
+        }*/
     }
 }
