@@ -1,6 +1,10 @@
-package me.darkeyedragon.magicwands.events;
+package me.darkeyedragon.magicwands.eventHandlers;
 
 import de.tr7zw.itemnbtapi.NBTItem;
+import me.darkeyedragon.magicwands.Wand;
+import me.darkeyedragon.magicwands.event.SpellCastEvent;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,7 +12,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class WandRightClickEvent implements Listener{
+public class WandClickEventHandler implements Listener{
 
     @EventHandler
     public void onPlayerRightClick (PlayerInteractEvent e){
@@ -18,8 +22,15 @@ public class WandRightClickEvent implements Listener{
         Player p = e.getPlayer();
         ItemStack itemStack = p.getInventory().getItemInMainHand();
         NBTItem item = new NBTItem(itemStack);
-        /*if (itemStack.getType() == Material.STICK && item.hasKey(WandBase.IS_WAND)){
-            Spell spell = new Confringo(p);
+
+        //TODO generate spell depending on meta data
+        SpellCastEvent spellCastEvent = new SpellCastEvent(null);
+        Bukkit.getServer().getPluginManager().callEvent(spellCastEvent);
+        if (spellCastEvent.isCancelled()){
+            return;
+        }
+        if (itemStack.getType() == Material.STICK && item.hasKey(Wand.SPELL_NBT)){
+            /*Spell spell = new Confringo(p);
             p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 20, 5));
             ShortCastAnimation shortCastAnimation = new ShortCastAnimation(p.getLocation());
             shortCastAnimation.play();
@@ -35,7 +46,7 @@ public class WandRightClickEvent implements Listener{
             }else{
                 spell.spawnParticles(p.getLocation(), 0);
                 Magicwands.recentlyCast.put(p, spell);
-            }
-        }*/
+            }*/
+        }
     }
 }

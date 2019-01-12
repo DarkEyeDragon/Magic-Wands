@@ -1,4 +1,4 @@
-package me.darkeyedragon.magicwands.events.custom;
+package me.darkeyedragon.magicwands.event;
 
 import me.darkeyedragon.magicwands.spell.Spell;
 import org.bukkit.event.Event;
@@ -8,9 +8,18 @@ public class SpellCastEvent extends Event{
 
     private static final HandlerList handlers = new HandlerList();
     private Spell spell;
+    private boolean cancelled;
 
     public SpellCastEvent (Spell spell){
         this.spell = spell;
+    }
+
+    public boolean isCancelled (){
+        return cancelled;
+    }
+
+    public void setCancelled (boolean cancel){
+        cancelled = cancel;
     }
 
     @Override
@@ -18,6 +27,9 @@ public class SpellCastEvent extends Event{
         return handlers;
     }
 
+    public static HandlerList getHandlerList (){
+        return handlers;
+    }
     public Spell getSpell (){
         return spell;
     }

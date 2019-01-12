@@ -9,14 +9,16 @@ package me.darkeyedragon.magicwands.enums;
  * Rarity: Lower is more common.
  * */
 
-import me.darkeyedragon.magicwands.Magicwands;
+import java.util.Random;
 
 public enum WandCore{
-    UNICORN(0.30, 1, Magicwands.BASE_DAMAGE * 1.2), DRAGON(0.50, 0.5, Magicwands.BASE_DAMAGE * 2.8), PHOENIX(0.90, 1, Magicwands.BASE_DAMAGE * 1.1);
+
+    UNICORN(0.30, 1, 5 * 1.2), DRAGON(0.50, 0.5, 5 * 2.8), PHOENIX(0.90, 1, 5 * 1.1);
 
     private double rarity;
     private double baseDamage;
     private double stability;
+    private static Random random = new Random();
 
     WandCore (double rarity, double stability, double baseDamage){
         this.rarity = rarity;
@@ -42,13 +44,18 @@ public enum WandCore{
         return null;
     }
 
-    public static String getWandCoresAsString (){
+    public static String getAsString (){
         StringBuilder builder = new StringBuilder();
         for (WandCore wc : WandCore.values()){
             builder.append(wc.toString());
             builder.append(" ");
         }
         return builder.toString();
+    }
+
+    public static WandCore getRandom (){
+        int num = random.nextInt(WandCore.values().length);
+        return WandCore.values()[num];
     }
 
     public double getRarity (){

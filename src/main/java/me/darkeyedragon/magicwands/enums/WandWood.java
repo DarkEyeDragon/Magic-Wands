@@ -1,5 +1,7 @@
 package me.darkeyedragon.magicwands.enums;
 
+import java.util.Random;
+
 /*
  * https://www.pottermore.com/writing-by-jk-rowling/wand-woods
  */
@@ -14,6 +16,8 @@ public enum WandWood{
     double stability;
     double power;
     boolean permanentOwner;
+
+    private static Random random = new Random();
 
     WandWood (double rarity, double stability, double power, boolean permanentOwner){
         this.rarity = rarity;
@@ -31,6 +35,15 @@ public enum WandWood{
         return null;
     }
 
+    public static boolean isWandWood (String name){
+        for (WandWood ww : WandWood.values()){
+            if (ww.toString().equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public double getRarity (){
         return rarity;
     }
@@ -45,5 +58,19 @@ public enum WandWood{
 
     public boolean isPermanentOwner (){
         return permanentOwner;
+    }
+
+    public static WandWood getRandom (){
+        int num = random.nextInt(WandWood.values().length);
+        return WandWood.values()[num];
+    }
+
+    public static String getAsString (){
+        StringBuilder builder = new StringBuilder();
+        for (WandWood ww : WandWood.values()){
+            builder.append(ww.toString());
+            builder.append(" ");
+        }
+        return builder.toString();
     }
 }

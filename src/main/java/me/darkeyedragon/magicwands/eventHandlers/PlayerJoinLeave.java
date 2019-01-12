@@ -1,4 +1,4 @@
-package me.darkeyedragon.magicwands.events;
+package me.darkeyedragon.magicwands.eventHandlers;
 
 import me.darkeyedragon.magicwands.Magicwands;
 import me.darkeyedragon.magicwands.database.DatabaseController;
@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.sql.SQLException;
 
-public class PlayerJoin implements Listener{
+public class PlayerJoinLeave implements Listener{
 
     @EventHandler
     public void onPlayerJoin (PlayerJoinEvent event){
