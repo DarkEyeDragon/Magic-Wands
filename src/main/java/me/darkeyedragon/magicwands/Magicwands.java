@@ -14,23 +14,28 @@ import java.util.UUID;
 
 public final class Magicwands extends JavaPlugin{
 
-    private PaperCommandManager manager;
+    public PaperCommandManager getCommandManager (){
+        return commandManager;
+    }
+
+    private PaperCommandManager commandManager;
 
     public static final double BASE_DAMAGE = 5;
     public static Map<UUID, PlayerWithMana> manaMap = new HashMap<>();
 
     @Override
     public void onEnable (){
-        manager = new PaperCommandManager(this);
-        manager.registerCommand(new CreateWandCommand(this));
-        manager.registerCommand(new WandInfoCommand(this));
+        commandManager = new PaperCommandManager(this);
+        commandManager.registerCommand(new CreateWandCommand(this));
+        commandManager.registerCommand(new WandInfoCommand(this));
         getServer().getPluginManager().registerEvents(new WandRightClickEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
-
     }
 
     @Override
     public void onDisable (){
         // Plugin shutdown logic
     }
+
+
 }
