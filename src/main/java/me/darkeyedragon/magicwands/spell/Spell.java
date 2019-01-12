@@ -14,7 +14,7 @@ public class Spell{
     private final Wand WAND;
 
     public Spell (Player caster, int manaCost, int baseDamage, SpellAnimation spellAnimation, Wand wand){
-        CASTER = Magicwands.manaMap.get(caster.getUniqueId());
+        CASTER = Magicwands.getManaMap().get(caster.getUniqueId());
         MANA_COST = manaCost;
         BASE_DAMAGE = baseDamage;
         SPELL_ANIMATION = spellAnimation;

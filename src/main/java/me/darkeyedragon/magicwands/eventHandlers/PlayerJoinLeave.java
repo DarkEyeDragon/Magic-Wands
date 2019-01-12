@@ -15,7 +15,7 @@ public class PlayerJoinLeave implements Listener{
     public void onPlayerJoin (PlayerJoinEvent event){
         try{
             DatabaseController.addPlayer(event.getPlayer());
-            Magicwands.manaMap.put(event.getPlayer().getUniqueId(), DatabaseController.getPlayerData(event.getPlayer()));
+            Magicwands.getManaMap().put(event.getPlayer().getUniqueId(), DatabaseController.getPlayerData(event.getPlayer()));
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -26,7 +26,7 @@ public class PlayerJoinLeave implements Listener{
     public void onPlayerQuit (PlayerQuitEvent event){
         try{
             DatabaseController.addPlayer(event.getPlayer());
-            Magicwands.manaMap.remove(event.getPlayer().getUniqueId(), DatabaseController.getPlayerData(event.getPlayer()));
+            Magicwands.getManaMap().remove(event.getPlayer().getUniqueId(), DatabaseController.getPlayerData(event.getPlayer()));
         }
         catch (SQLException e){
             e.printStackTrace();
